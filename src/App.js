@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './Resources/styles.css'
+
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -62,7 +63,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <header>
+
         <Router>
           <div className="container">
 
@@ -85,7 +86,8 @@ class App extends Component {
           </div>
 
         </Router>
-        </header>
+
+
 
         <p> TEST message: The header is way too big! </p>
 
