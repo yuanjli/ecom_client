@@ -6,7 +6,7 @@ class Nav extends Component {
   handleLogout = (e) => {
     console.log('logging out...');
     e.preventDefault();
-    localStorage.removeItem('mernToken');
+    localStorage.removeItem('LoginToken');
     this.props.updateUser();
   }
 

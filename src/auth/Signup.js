@@ -29,7 +29,7 @@ class Signup extends Component {
     .then(result => {
       console.log('SUCCESS!', result);
       // Add the newly received token to LS
-      localStorage.setItem('mernToken', result.data.token);
+      localStorage.setItem('LoginToken', result.data.token);
       // Update the user with a call to App.js
       this.props.updateUser();
     })

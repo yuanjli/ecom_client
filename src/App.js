@@ -43,7 +43,7 @@ class App extends Component {
       .catch(err => {
         console.log('ERROR', err);
         console.log('response', err.response);
-        localStorage.removeItem('mernToken');
+        localStorage.removeItem('LoginToken');
         this.setState({
           user: null
         });
@@ -51,7 +51,7 @@ class App extends Component {
     }
     else {
       console.log('No token was found');
-     // localStorage.removeItem('mernToken');
+     // localStorage.removeItem('LoginToken');
       this.setState({
         user: null
       });
@@ -63,22 +63,7 @@ class App extends Component {
       <div className="App">
 
         <header>
-          {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer">
-            Learn React
-          </a>
-        </header>
-
-        <p> The header is way too big! </p>
-
         <Router>
-        
           <div className="container">
 
             <Nav user={this.state.user} updateUser={this.getUser} />
@@ -100,6 +85,10 @@ class App extends Component {
           </div>
 
         </Router>
+        </header>
+
+        <p> TEST message: The header is way too big! </p>
+
         <Footer />
 
       </div>
