@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../logo.svg';
-import './nav.css';
+
 
 
 class Nav extends Component {
@@ -12,71 +12,12 @@ class Nav extends Component {
     this.props.updateUser();
   }
 
-  constructor(props){
-    super(props);
-    this.state = {
-      ballStyles: {},
-      headingOne: {opacity: '1'},
-      headingTwo: {opacity: '0.3'},
-      text: {}
-    }
-  }
-
-
-  scale = (x, size) => {
-    return new Promise( (res, rej) => {
-      this.setState({
-        ballStyles: {
-          transform: `translateX(${x}px) scale(${size})`,
-        }
-      })
-      window.setTimeout(res.bind(null,'really done'), 300)
-    })
-  }
-
-  moveAlongX = (x, duration) => {
-    return new Promise( (res, rej) => {
-      this.setState({
-        ballStyles: {
-          transform: `translateX(${x}px)`,
-        }
-      })
-      window.setTimeout( () => {
-        res('done moving');
-      }, duration);      
-    })
-  }
-  animate = (direction) => {
-
-    if (direction === 'go-right') {
-      this.setState({
-        headingOne: { opacity: '0.3' },
-        headingTwo: { opacity: '1'}
-      })
-    } else {
-      this.setState({
-        headingOne: {opacity: '1' },
-        headingTwo: {opacity: '0.3'}
-      })
-    }
-    
-    const getPixels = (direction) =>
-      direction === 'go-right' ? 220 : 0;
-    
-    const x = getPixels(direction);
-    
-    this.moveAlongX(x, 300)
-      .then( () => this.scale(x, 1.5) )
-      .then( () => this.scale(x, 1) )
-  
-  }
-
   render(){
     let links = '';
     if(this.props.user){
       links = (
           <span>
-            <a onClick={this.handleLogout}>Logout</a>
+            <Link to="/" onClick={this.handleLogout}>Logout</Link>
             <Link to="/profile">Profile</Link>
           </span>
         );
@@ -92,43 +33,24 @@ class Nav extends Component {
 
     return (
 
-      <div>
-        <div className="text-container">
-        
-           <nav className="nav">
-            <Link to="/">Home</Link>
-            {links}
-          </nav>
-  
-          <h1
-          className="header-text"
-          onClick={this.animate.bind(this,'go-left')}
-          style={this.state.headingOne}
-          >Web Development</h1>
+        <nav className="nav navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+          <div className="animated zoomIn delay-1s">
+            <Link to="/" className="navbar-brand">
+              <img src={ logo } className="navbar-logo" alt=""/>
+               <strong>upBeat</strong> 
+            </Link>
+          </div>
 
-          <h1
-          className="header-text"
-          onClick={this.animate.bind(this,'go-right')}
-          style={this.state.headingTwo}
-          >Business</h1>
-          
-        </div>
-        
-        <div className="ball" style={this.state.ballStyles}></div>
-        <div className="rail"></div>
-        
-        <div className="content-box">
-        <p style={this.state.text}>
-            Chia raw denim biodiesel taxidermy affogato, readymade PBR&B blog wolf umami synth butcher salvia. Wolf kickstarter plaid fingerstache, thundercats pickled cray messenger bag lomo hoodie tattooed fixie. Cardigan tilde leggings, iPhone sustainable pinterest pour-over wayfarers jean shorts offal stumptown. Fap man braid mixtape, leggings vegan typewriter flannel 3 wolf moon.
-        </p>
-        
-        <p style={this.state.text}>
-          Normcore viral pork belly, letterpress tacos asymmetrical thundercats ugh. Direct trade kombucha kogi crucifix. Ethical ramps small batch man bun artisan, pinterest literally migas taxidermy schlitz gastropub readymade brooklyn seitan.
-        </p>
-          
-        </div>
-      </div>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul className="navbar-nav ml-auto">
+              {links}
+            </ul>
+          </div>
+        </nav>
 
     )
   }

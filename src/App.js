@@ -8,10 +8,10 @@ import axios from 'axios';
 import SERVER_URL from './constants/server';
 import Nav from './layout/Nav';
 import Footer from './layout/Footer';
-import Home from './Home';
+import Home from './components/Home';
 import Signup from './auth/Signup';
 import Login from './auth/Login';
-import Profile from './Profile';
+import UserLayout from './Profile';
 
 
 class App extends Component {
@@ -63,14 +63,10 @@ class App extends Component {
     return (
       <div className="App">
 
-
         <Router>
           <div className="container">
-
             <Nav user={this.state.user} updateUser={this.getUser} />
-
             <Route exact path="/" component={Home} />
-
             <Route path="/login" component={
               () => (<Login user={this.state.user} updateUser={this.getUser} />)
             } />
@@ -78,21 +74,16 @@ class App extends Component {
             <Route path="/signup" component={
               () => (<Signup user={this.state.user} updateUser={this.getUser} />)
             } />
-
             <Route path="/profile" component={
-              () => (<Profile user={this.state.user} />)
+              () => (<UserLayout user={this.state.user} />)
             } />
 
           </div>
-
         </Router>
 
 
-
         <p> TEST message: The header is way too big! </p>
-
         <Footer />
-
       </div>
     );
   }
