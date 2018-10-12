@@ -89,7 +89,7 @@ a {
 }
 
 .bck_b_light {
-    background: #999592;
+    background: #747a84;
 }
 
 .bck_b_dark {
@@ -312,7 +312,7 @@ header {
 }
 
 header .logo {
-    font-family: 'Monoton', cursive;
+    font-family: 'Verdana', cursive;
     color: #ffffff;
     font-size: 40px;
     padding: 11px 0px;

@@ -1,12 +1,14 @@
 import React from 'react';
+import MyButton from '../utils/button';
 
-const Hpromotion = (props) => {
+const HomePromotion = (props) => {
+
     const promotion = {
-	    img:'/images/jordan1.jpg',
-	    lineOne:'Up to 40% off',
-	    lineTwo:'In second hand shoes',
-	    linkTitle:'Shop now',
-	    linkTo:'/shop'
+        img:'/images/jordan1.jpg',
+        lineOne:'Up to 10% off',
+        lineTwo:'In second hand shoe',
+        linkTitle:'Shop now',
+        linkTo:'/shop'
     }
 
     const renderPromotion = () => (
@@ -39,5 +41,4 @@ const Hpromotion = (props) => {
     );
 };
 
-
-export default Hpromotion;
+export default HomePromotion;
