@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import './App.css';
-import './Resources/styles.css'
+// import './Resources/styles.css'
 
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+
 import axios from 'axios';
-import SERVER_URL from './constants/server';
-import Nav from './layout/Nav';
-import Footer from './layout/Footer';
-import Home from './components/Home';
-import Signup from './auth/Signup';
-import Login from './auth/Login';
-import UserLayout from './Profile';
+import SERVER_URL from '../constants/server';
+import Nav from '../layout/Nav';
+import Footer from '../layout/Footer';
+import Home from '../components/Home';
+import Signup from '../auth/Signup';
+import Login from '../auth/Login';
+import UserLayout from '../layout/Profile';
+import Product from '../containers/Product';
+import Cart from '../containers/Cart';
+
 
 
 class App extends Component {
@@ -66,13 +70,21 @@ class App extends Component {
         <Router>
           <div className="container">
             <Nav user={this.state.user} updateUser={this.getUser} />
+            <div> Word
             <Route exact path="/" component={Home} />
+            </div>
             <Route path="/login" component={
               () => (<Login user={this.state.user} updateUser={this.getUser} />)
             } />
 
             <Route path="/signup" component={
               () => (<Signup user={this.state.user} updateUser={this.getUser} />)
+            } />
+            <Route path="/product" component={
+              () => (<Product user={this.state.user} />)
+            } />
+            <Route path="/cart" component={
+              () => (<Cart user={this.state.user} />)
             } />
             <Route path="/profile" component={
               () => (<UserLayout user={this.state.user} />)
@@ -81,8 +93,6 @@ class App extends Component {
           </div>
         </Router>
 
-
-        <p> TEST message: The header is way too big! </p>
         <Footer />
       </div>
     );

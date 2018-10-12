@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // const links = [
 //   {
@@ -21,7 +21,7 @@ class Profile extends Component {
   render() {
     if(this.props.user){
       return (
-          <div>
+          <div className="home-container">
             <h2>Hello again, {this.props.user.name}!</h2>
             <h3> Lastname: {this.props.user.lastname} </h3>
             <h3> name: {this.props.user.name} </h3>
