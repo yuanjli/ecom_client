@@ -1,6 +1,8 @@
 import React from 'react';
 import UserLayout from '../../HighOrder/user';
 import MyButton from '../utils/button';
+import UserHistoryBlock from '../utils/User/history_block';
+
 
 
 const UserDashboard = ({user}) => {
@@ -22,12 +24,20 @@ const UserDashboard = ({user}) => {
                     />
                 </div>
 
-                <div className="user_nfo_panel">
-                    <h1>History purchases</h1>
-                    <div className="user_product_block_wrapper">
+                {
+                    user.userData.history ?
+                     <div className="user_nfo_panel">
+                        <h1>History purchases</h1>
+                        <div className="user_product_block_wrapper">
                             history
-                    </div>            
-                </div>
+                            <UserHistoryBlock
+                                products={user.userData.history}
+                            />
+                        </div>            
+                    </div>
+
+                    :null 
+                }
                 
             </div>
         </UserLayout>
