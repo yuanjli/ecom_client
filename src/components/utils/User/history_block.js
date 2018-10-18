@@ -1,6 +1,13 @@
 import React from 'react';
+//import moment from 'moment'; // third party library that could parse dates;
 
 const UserHistoryBlock = (props) => {
+
+
+	//const renderBlocks = ()
+
+
+
 	return (
 		<div className="history_blocks">
 			<table>
