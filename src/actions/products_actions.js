@@ -18,7 +18,7 @@ import { PRODUCT_SERVER } from '../components/utils/misc';
 
 export function getProductDetail(id){
 
-    const request = axios.get(`${PRODUCT_SERVER}/articles_by_id?id=${id}&type=single`)
+    const request = axios.get(`${PRODUCT_SERVER}/items_by_id?id=${id}&type=single`)
     .then(response=>{
         return response.data[0]
     });
@@ -73,11 +73,11 @@ export function getProductsToShop(skip, limit,filters =[], previousState = []){
                 .then(response => {
                     let newState = [
                         ...previousState,
-                        ...response.data.articles
+                        ...response.data.items
                     ];
                     return {
                         size: response.data.size,
-                        articles: newState
+                        items: newState
                     }
                 });
 

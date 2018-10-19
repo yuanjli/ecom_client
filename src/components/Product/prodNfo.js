@@ -59,10 +59,7 @@ const ProdNfo = (props) => {
             <h2>Specs:</h2>
             <div>
                 <div className="item">
-                    <strong>Frets:</strong> {detail.frets}
-                </div>
-                <div className="item">
-                    <strong>Wood:</strong> {detail.wood.name}
+                    <strong>Style:</strong> {detail.style.name}
                 </div>
             </div>
         </div>
