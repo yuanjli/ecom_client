@@ -73,11 +73,11 @@ export function getProductsToShop(skip, limit,filters =[], previousState = []){
                 .then(response => {
                     let newState = [
                         ...previousState,
-                        ...response.data.items
+                        ...response.data.articles
                     ];
                     return {
                         size: response.data.size,
-                        items: newState
+                        articles: newState
                     }
                 });
 

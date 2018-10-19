@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PageTop from '../utils/page_top';
 
 import ProdNfo from './prodNfo';
+import ProdImg from './prodImg';
 
 import { connect } from 'react-redux';  // when we get the ID of the product, we need to fetch the information
 import { getProductDetail, clearProductDetail } from '../../actions/products_actions';
@@ -13,9 +14,14 @@ class Product extends Component {
      // fetch the information
     componentDidMount(){
         const id = this.props.match.params.id;
-        console.log(id)
+        // console.log(id)
         // checked for getting the id correctly. 
-        this.props.dispatch(getProductDetail(id))
+        this.props.dispatch(getProductDetail(id)).then(response=>{
+            console.log('No product found') // we can redirect to home page or a not found page.
+            if(!this.props.products.prodDetail){
+                this.props.history.push('/'); //redirected to home. 
+            }
+        })
 
     }
 
