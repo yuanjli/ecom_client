@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import UserLayout from '../../HighOrder/user';
+
+import { connect } from 'react-redux';
+
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
+import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
 
 
 class Cart extends Component {
   render() {
     if(this.props.user){
       return (
+        <UserLayout> 
           <div className="home-container">
             <h2>Cart Page!</h2>
             <h3> Lastname: {this.props.user.lastname} </h3>
@@ -13,6 +21,7 @@ class Cart extends Component {
             <h4>Your email is {this.props.user.email}</h4>
 
           </div>
+          </UserLayout>
         );
     }
     return(
