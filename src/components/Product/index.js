@@ -5,6 +5,7 @@ import ProdNfo from './prodNfo';
 import ProdImg from './prodImg';
 
 import { connect } from 'react-redux';  // when we get the ID of the product, we need to fetch the information
+import { addToCart } from '../../actions/user_actions';
 import { getProductDetail, clearProductDetail } from '../../actions/products_actions';
 
 
@@ -29,6 +30,10 @@ class Product extends Component {
         this.props.dispatch(clearProductDetail())
     }
 
+    addToCartHandler(id){
+        //console.log(id);
+        this.props.dispatch(addToCart(id))
+    }
 
     render() {
         return (
@@ -46,7 +51,7 @@ class Product extends Component {
                         </div>
                         <div className="right">
                             <ProdNfo
-                                addToCard={(id)=> this.addToCartHandler(id)}
+                                addToCart={(id)=> this.addToCartHandler(id)}
                                 detail={this.props.products.prodDetail}
                             />
                         </div>
