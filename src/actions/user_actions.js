@@ -6,10 +6,11 @@ import {
     LOGOUT_USER,
     UPDATE_DATA_USER,
     CLEAR_UPDATE_USER_DATA,
-    ADD_TO_CART_USER
+    ADD_TO_CART_USER,
+    GET_CART_ITEMS_USER
 } from './types';
 
-import { USER_SERVER } from '../components/utils/misc';
+import { USER_SERVER, PRODUCT_SERVER } from '../components/utils/misc';
 
 
 export function registerUser(dataToSubmit){
@@ -86,6 +87,20 @@ export function addToCart(_id){
     .then(response => response.data )
     return {
         type: ADD_TO_CART_USER,
+        payload: request
+    }
+}
+
+export function getCartItems(cartItems, userCart){
+
+    const request = axios.get(`${PRODUCT_SERVER}/items_by_id?id=${cartItems}&type=array`)
+                    .then(response => {
+                        console.log(response.data);
+                        return response.data;
+                    })
+
+    return {
+        type: GET_CART_ITEMS_USER,
         payload: request
     }
 }

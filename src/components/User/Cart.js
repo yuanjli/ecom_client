@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserLayout from '../../HighOrder/user';
 
 import { connect } from 'react-redux';
+import { getCartItems } from '../../actions/user_actions';
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
@@ -9,6 +10,39 @@ import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
 
 
 class Cart extends Component {
+
+  state = { 
+    loading: true,
+    total:0,
+    showTotal: false,
+    showSuccess: false,
+
+  }
+
+  // Creating two variables here: 
+  componentDidMount(){
+    let cartItem = [];
+    let user = this.props.user;
+
+    if(user.userData.cart){
+      if(user.userData.cart.length > 0){
+
+        user.userData.cart.forEach(item => {
+          cartItem.push(item.id)
+        });
+
+        // dispatch: 
+        this.props.dispatch(getCartItems(cartItem, user.userData.cart))
+        .then(()=> {
+          
+        })
+
+      }
+
+    }
+
+  }
+
   render() {
     if(this.props.user){
       return (
@@ -33,4 +67,11 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Cart);
