@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserLayout from '../../HighOrder/user';
+import UserProductBlock from '../utils/User/product_block';
 
 import { connect } from 'react-redux';
 import { getCartItems } from '../../actions/user_actions';
@@ -21,18 +22,18 @@ class Cart extends Component {
 
   // Creating two variables here: 
   componentDidMount(){
-    let cartItem = [];
+    let cartItems = [];
     let user = this.props.user;
 
     if(user.userData.cart){
       if(user.userData.cart.length > 0){
 
         user.userData.cart.forEach(item => {
-          cartItem.push(item.id)
+          cartItems.push(item.id)
         });
 
         // dispatch: 
-        this.props.dispatch(getCartItems(cartItem, user.userData.cart))
+        this.props.dispatch(getCartItems(cartItems, user.userData.cart))
         .then(()=> {
           
         })
@@ -47,16 +48,18 @@ class Cart extends Component {
     if(this.props.user){
       return (
         <UserLayout> 
-          <div className="home-container">
-            <h2>Cart Page!</h2>
-            <h3> Lastname: {this.props.user.lastname} </h3>
-            <h3> name: {this.props.user.name} </h3>
+          <h2>My Cart</h2>
+          <div className="user_cart">
+            <UserProductBlock
+              products={this.props.user}
+              type="cart"
+              removeItem={(id)=> this.removeFromCart(id)}
 
-            <h4>Your email is {this.props.user.email}</h4>
+              />
 
           </div>
-          </UserLayout>
-        );
+        </UserLayout>
+      );
     }
     return(
       <div>

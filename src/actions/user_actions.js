@@ -95,7 +95,14 @@ export function getCartItems(cartItems, userCart){
 
     const request = axios.get(`${PRODUCT_SERVER}/items_by_id?id=${cartItems}&type=array`)
                     .then(response => {
-                        console.log(response.data);
+                        //console.log(response.data);
+                        userCart.forEach(item=>{
+                            response.data.forEach((k,i)=>{
+                                if(item.id === k.id){
+                                    response.data[i].quantity = item.quantity;
+                                }
+                            })
+                        })
                         return response.data;
                     })
 
