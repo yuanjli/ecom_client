@@ -24,13 +24,26 @@ class ProdImg extends Component {
 		}
 	}
 
+	renderCardImage = (images) => {
+		if(images.length > 0){
+			return images[0].url
+		}else{
+			return `/images/image_not_available.png`
+		}
+	}
+
 
 	render() {
 		// console.log(this.state)
+		const {detail}= this.props;
 		return (
-			<div>
+			<div className="product_image_container">
+				<div className="main_pic">
+					<div 
+						style={{background:`url(${this.renderCardImage(detail.images)}) no-repeat`}}>
 
-
+					</div>
+				</div>
 			</div>
 			);
 	}
