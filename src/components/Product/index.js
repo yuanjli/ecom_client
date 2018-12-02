@@ -47,7 +47,12 @@ class Product extends Component {
                     this.props.products.prodDetail ?
                     <div className="product_detail_wrapper">
                         <div className="left">
-                            images
+                            images:
+                            <div style={{width:'500px'}}>
+                                <ProdImg
+                                    detail={this.props.products.prodDetail}
+                                />
+                            </div>
                         </div>
                         <div className="right">
                             <ProdNfo
@@ -62,9 +67,7 @@ class Product extends Component {
 
                 </div>
                 <div className="container">
-                    <h2>Product Page!</h2>
                     <h3> name: {this.props.user.name} </h3>
-
                 </div>                
             </div>
         );
