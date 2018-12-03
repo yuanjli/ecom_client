@@ -25,11 +25,21 @@ class ImageLightBox extends Component {
 		return false
 	}
 
+	gotoPrevious = () => {
+		this.setState({
+			currentImage: this.state.currentImage -1
+		})
+	}
+
+	gotoNext = () => {
+		this.setState({
+			currentImage: this.state.currentImage +1
+		})
+	}
+
 	closeLightbox = () => {
 		this.props.onclose();
 	}
-
-
 
 
 
