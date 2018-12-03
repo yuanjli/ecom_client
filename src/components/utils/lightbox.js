@@ -9,6 +9,9 @@ class ImageLightBox extends Component {
 		images: []
 	}
 
+
+
+
 	render() {
 		return (
 			<Lightbox 
